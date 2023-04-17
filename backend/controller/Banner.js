@@ -9,17 +9,16 @@ exports.getBanner = catchAsync(async (req, res) => {
 		data: banner,
 	});
 });
-
 exports.createBanner = catchAsync(async (req, res, next) => {
 	try {
 		const { name, orders } = req.body;
 		const { avatar } = req.files;
-		const banner_images = new Banner({
+		const banner_image = new Banner({
 			avatar: avatar[0].path,
 			name: name,
 			orders: orders,
 		});
-		const banner = await banner_images.save();
+		const banner = await banner_image.save();
 		res.status(200).json({
 			success: true,
 			data: banner,

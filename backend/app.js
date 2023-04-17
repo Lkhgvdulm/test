@@ -8,6 +8,17 @@ const multer = require('multer');
 const env = require('dotenv');
 const bannerRouter = require('./router/banner');
 const userRouter = require('./router/user');
+const GoalRouter = require('./router/Goals');
+const ValuesRouter = require('./router/Values');
+const AboutRouter = require('./router/About');
+const DirectorRouter = require('./router/Director');
+const TimeRouter = require('./router/Time');
+const ResourceRouter = require('./router/Resource');
+const WorkplaceRouter = require('./router/Workplace');
+const LogoRouter = require('./router/Logo');
+const NewsRouter = require('./router/News');
+const AddressRouter = require('./router/Address');
+// const JobRouter = require('./router/Job');
 
 env.config();
 const imageFileStorage = multer.diskStorage({
@@ -76,6 +87,18 @@ app.use(
 
 app.use(bannerRouter);
 app.use(userRouter);
+app.use(GoalRouter);
+app.use(ValuesRouter);
+app.use(AboutRouter);
+app.use(DirectorRouter);
+app.use(TimeRouter);
+app.use(ResourceRouter);
+app.use(WorkplaceRouter);
+app.use(LogoRouter);
+app.use(NewsRouter);
+app.use(AddressRouter);
+// app.use(JobRouter);
+
 mongoose.connect(process.env.mongourl, () => {
 	console.log('Connected to database');
 	app.listen(process.env.dev, () => {
