@@ -12,7 +12,6 @@ exports.getResource = catchAsync(async (req, res) => {
 exports.createResource = catchAsync(async (req, res, next) => {
 	try {
 		const { name, description } = req.body;
-		console.log("asdf",req.body)
 		const { avatar } = req.files;
 		const resource_image = new Resource({
 			avatar: avatar[0].path,

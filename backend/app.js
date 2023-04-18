@@ -18,7 +18,6 @@ const WorkplaceRouter = require('./router/Workplace');
 const LogoRouter = require('./router/Logo');
 const NewsRouter = require('./router/News');
 const AddressRouter = require('./router/Address');
-// const JobRouter = require('./router/Job');
 
 env.config();
 const imageFileStorage = multer.diskStorage({
@@ -97,7 +96,6 @@ app.use(WorkplaceRouter);
 app.use(LogoRouter);
 app.use(NewsRouter);
 app.use(AddressRouter);
-// app.use(JobRouter);
 
 mongoose.connect(process.env.mongourl, () => {
 	console.log('Connected to database');

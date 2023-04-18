@@ -2,7 +2,8 @@ const mongoose = require('mongoose');
 
 const NewsSchema = new mongoose.Schema({
     name: { type: String}, 
-    orders: { type: Number},
+    description: { type: String},
+    avatar: { type: String},
     createAt: {
         type: Date,
         default: Date.now,

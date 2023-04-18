@@ -11,10 +11,10 @@ exports.getWorkplace = catchAsync(async(req, res) => {
 });
 exports.createWorkplace = catchAsync(async(req, res, next) => {
     try {
-    const { name, description } = req.body;
-    const workplace_image = new Workplace({
-        name: name,
-        description: description,
+        const { name, description } = req.body;
+        const workplace_image = new Workplace({
+            name: name,
+            description: description,
     });
     const data = await workplace_image.save();
     res.status(200).json({
@@ -29,7 +29,7 @@ exports.createWorkplace = catchAsync(async(req, res, next) => {
 exports.editWorkplace = catchAsync(async(req, res) => {
     try {
         const { id } = req.params;
-        const { name } = req.body;
+        const { name, description } = req.body;
         const workplace = await Workplace.findById(id);
         if(name) {
             workplace.name = name;
@@ -63,7 +63,7 @@ exports.deleteWorkplace = catchAsync(async(req, res, next) => {
         return next(new AppError('fails', 400));
     }
     res.status(200).json ({
-        success: true,
+        success: true, 
         data: workplace,
     });
-});
+})

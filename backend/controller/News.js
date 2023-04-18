@@ -1,7 +1,6 @@
 const News = require('../models/News');
 const catchAsync = require('../utils/catchAsync');
 const AppError = require('../middleware/myError');
-const Director = require('../models/Director');
 
 exports.getNews = catchAsync(async(req, res) => {
     const news = await News.find();
@@ -39,10 +38,12 @@ exports.editNews = catchAsync(async(req, res) => {
         if(name) {
             news.name = name;
         }
-        if(orders) {
+        if(description) {
             news.description = description;
         }
         if(newAvatar) {
+            news.avatar = avatar[0].path;
+        } else {
             news.avatar = avatarOld;
         }
         const saveNews_images = await news.save();
